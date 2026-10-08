@@ -1,0 +1,18 @@
+# Hosted-runner smoke test. Proves GitHub-hosted Actions run for this repository.
+# No checkout, no secrets, no token scopes, no third-party actions.
+name: smoke
+on:
+  push:
+  workflow_dispatch:
+permissions: {}
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Report runner
+        run: |
+          echo "GitHub-hosted runner is available"
+          uname -a
+          python3 --version
+          node --version
